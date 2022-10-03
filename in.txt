@@ -1,0 +1,11 @@
+%Define the type of particles inside the sample:
+%CNTs_only for CNTs,
+%GNPs_only for GNPs,
+%GNP_CNT_mix for both CNTs and GNPs
+GNP_CNT_mix 
+%Indicate the path to the Abaqus database (odb file) and the name of the Abaqus Step in separate lines.
+%If the database is located in the same directory as the executable, then only the filename may be specified. 
+%When specifying the fullpath, use double backslashes for instance: 
+%    C:\\Users\\username\\Documents\\Job-1.odb 
+VOL0250_CNT01GNP01.odb
+Step_name
