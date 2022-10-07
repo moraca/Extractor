@@ -628,7 +628,7 @@ int Extract_From_ODB::Extract_gnp_data_for_frame(const int& frame, const int& n_
     streamsize double_size = sizeof(double);
 
     //Create vector with numbers from 0 to 8
-    vector<int> all_vertices = Vector_fol_all_vertices_inside();
+    vector<int> all_vertices = Vector_for_all_vertices_inside();
 
     //Iterate over the number of GNPs
     for (int i = 0; i < n_gnps; i++)
@@ -706,7 +706,7 @@ int Extract_From_ODB::Extract_gnp_data_for_frame(const int& frame, const int& n_
     return 1;
 }
 //This function generates a vector with the numbers from 1 to 8
-vector<int> Extract_From_ODB::Vector_fol_all_vertices_inside()
+vector<int> Extract_From_ODB::Vector_for_all_vertices_inside()
 {
     vector<int> tmp(8, 0);
 

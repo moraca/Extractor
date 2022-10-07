@@ -43,7 +43,7 @@ public:
 	bool Is_vertex_inside_cuboid(const double vertex[], const cuboid& sample);
 	int Extract_gnp_data_for_frame(const int& frame, const int& n_gnps, const vector<vector<int> >& vertices_in, odb_Assembly& root_assy, odb_FieldOutput& current_fieldU);
 	string Get_gnp_set_name(const int& gnp_i, const int& vertex);
-	vector<int> Vector_fol_all_vertices_inside();
+	vector<int> Vector_for_all_vertices_inside();
 	int Extract_matrix_data_for_frame(const int& frame, odb_Assembly& root_assy, odb_FieldOutput& current_fieldU);
 	int Get_displacement_for_node_set(const string& set_name, odb_Assembly& root_assy, odb_FieldOutput& current_fieldU, double disp[]);
 };
