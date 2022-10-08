@@ -104,7 +104,7 @@ int Extract_From_ODB::Extract_data_from_odb(const Input& Init)
                 return 0;
             }
             gnp1 = time(NULL);
-            cout << "Extracted CNT data in " << (int)(gnp1 - gnp0) << " secs." << endl;
+            cout << "Extracted GNP data in " << (int)(gnp1 - gnp0) << " secs." << endl;
         }
 
         //Extract the matrix data
