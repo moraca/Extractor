@@ -682,7 +682,7 @@ int Extract_From_ODB::Extract_gnp_data_for_frame(const int& frame, const int& n_
             //Get the acutal values
             const odb_FieldValue val = vals[0];
             //Output node label
-            //cout << "  Node: " << val1.nodeLabel() << endl;
+            //cout << "  Node: " << val.nodeLabel() << endl;
             //Get the data of the displacements
             int numComp = 0; //This integer is needed to call data() in the line below
             const float* const data = val.data(numComp);
@@ -690,8 +690,8 @@ int Extract_From_ODB::Extract_gnp_data_for_frame(const int& frame, const int& n_
 
             //Get the displacements as a double
             double disp_vx = (double)data[0];
-            double disp_vy = (double)data[0];
-            double disp_vz = (double)data[0];
+            double disp_vy = (double)data[1];
+            double disp_vz = (double)data[2];
 
             //Save displacements in the binary file
             otec_points.write((char*)&disp_vx, double_size);
