@@ -9,3 +9,7 @@ GNP_CNT_mix
 %    C:\\Users\\username\\Documents\\Job-1.odb 
 VOL0250_CNT01GNP01.odb
 Step_name
+%Indicate the starting frame to extract data
+%Note that first frame is frame number 0 and frame 0 has no displacements, so by deafault frame 0 is ignored
+%If frame 0 is indicated as the first frame, then the first frame is set to 1
+1

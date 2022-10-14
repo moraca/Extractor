@@ -53,6 +53,26 @@ int Input::Read_extraction_parameters(Extraction_para& extract_para, ifstream& i
 	istr_step >> extract_para.step_name;
 	//cout << "extract_para.step_name=" << extract_para.step_name << endl;
 
+	//Read line for the first frame
+	istringstream istr_first_frame(Get_Line(infile));
+	istr_first_frame >> extract_para.first_frame;
+
+	//Check the first frame is a valid frame
+	if (extract_para.first_frame < 0)
+	{
+		cout << "Error in Read_extraction_parameters: Invalid first frame number. " << endl;
+		cout << "First frame number should be greater or equal to zero. Input was: " << extract_para.first_frame << "." << endl;
+		return 0;
+	}
+
+	//Check if first frame is frame 0
+	if (extract_para.first_frame == 0)
+	{
+		//Set first frame as frame 1 and send a message
+		extract_para.first_frame = 1;
+		cout << "Warning: First frame is frame 0. Frame 0 will be ignored and first frame will be set as 1." << endl;
+	}
+
 	return 1;
 }
 //Read the input data in a whole line (to skip over the comment line starting with a '%')

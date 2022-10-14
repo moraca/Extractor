@@ -27,6 +27,13 @@ int Extract_From_ODB::Extract_data_from_odb(const Input& Init)
     odb_SequenceFrame& allFramesInStep = odb.steps()[Init.extract_para.step_name.c_str()].frames();
     //Get the number of frames in the database
     int n_frames = allFramesInStep.size();
+    //Check the first frame indicated in the input parameters is valid
+    if (Init.extract_para.first_frame >= n_frames)
+    {
+        cout << "Error in Extract_data_from_odb: First frame number input is greater than the maximum frame number." << endl;
+        cout << "First frame number input is " << Init.extract_para.first_frame << ", maximum frame number is " << n_frames - 1 << " (there are " << n_frames << " frames)." << endl;
+        return 0;
+    }
     cout << endl << "There are " << n_frames << " frames in the Abaqus database." << endl;
 
     //Data needed in case there are CNTs
@@ -62,7 +69,7 @@ int Extract_From_ODB::Extract_data_from_odb(const Input& Init)
     }
 
     //Iterate overt the frames, ignoring the first one which has no deformation
-    for (int i = 1; i < n_frames; i++)
+    for (int i = Init.extract_para.first_frame; i < n_frames; i++)
     {
         cout << "============================================================================" << endl;
         cout << "============================================================================" << endl;

@@ -18,6 +18,8 @@ struct Extraction_para
     string odb_file;
     //Name of the simulation step in Abaqus
     string step_name;
+    //Starting frame to extract data from
+    int first_frame;
 };
 
 
