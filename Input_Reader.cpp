@@ -5,8 +5,7 @@
 //Read data
 int Input::Read_input_file(ifstream& infile)
 {
-	cout << "Reading input file..." << endl;
-
+	//Read parameters from input file
 	if (!Read_extraction_parameters(extract_para, infile))
 	{
 		cout << "Error in Read_input_file when calling Read_extraction_parameters." << endl;

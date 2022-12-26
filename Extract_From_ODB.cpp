@@ -47,11 +47,18 @@ int Extract_From_ODB::Extract_data_from_odb(const Input& Init)
     //Get the CNT data if there are CNTs
     if (cnts_present)
     {
+        time_t it0, it1;
+        it0 = time(NULL);
+
+        //Get CNT data
+        cout << endl << "Reading CNT data from csv files ..." << endl;
         if (!Get_number_of_cnts_and_points(n_cnts, n_points))
         {
             cout << "Error in Extract_data_from_odb when calling Get_number_of_cnts_and_points." << endl;
             return 0;
         }
+        it1 = time(NULL);
+        cout << "Read CNT data from csv files in " << (int)(it1 - it0) << " secs." << endl << endl;
     }
 
     //Data needed in case there are GNPs
@@ -61,11 +68,21 @@ int Extract_From_ODB::Extract_data_from_odb(const Input& Init)
     //Get the GNP data if there are GNPs
     if (gnps_present)
     {
+        time_t it0, it1;
+        it0 = time(NULL);
+
+        if (!cnts_present)
+            cout << endl;
+
+        //Get GNP data
+        cout << "Reading GNP data from csv files ..." << endl;
         if (!Get_number_of_gnps_and_vertices_inside(n_gnps, vertices_in))
         {
             cout << "Error in Extract_data_from_odb when calling Get_number_of_gnps_and_vertices_inside." << endl;
             return 0;
         }
+        it1 = time(NULL);
+        cout << "Read GNP data from csv files in " << (int)(it1 - it0) << " secs." << endl << endl;
     }
 
     //Iterate overt the frames, ignoring the first one which has no deformation

@@ -10,6 +10,11 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
+    cout << "**********************************************************" << endl;
+    cout << "                         Extractor" << endl;
+    cout << "**********************************************************" << endl;
+    cout << endl;
+
     //Read input file name into in_file
     string in_file;
     if (argc > 1)
