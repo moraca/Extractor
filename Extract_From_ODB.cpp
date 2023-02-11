@@ -4,6 +4,8 @@
 //Main function to extract data from ODB
 int Extract_From_ODB::Extract_data_from_odb(const Input& Init)
 {
+    time_t itt0, itt1;
+    itt0 = time(NULL);
     //Initialize Abaqus C++ API
     odb_initializeAPI();
 
@@ -14,7 +16,7 @@ int Extract_From_ODB::Extract_data_from_odb(const Input& Init)
 
     //Access the root assembly
     odb_Assembly& root_assy = odb.rootAssembly();
-    //hout << "root_assy" << endl;
+    //cout << "root_assy" << endl;
 
     //Make sure the step indicated in the input file is in the odb file
     if (!Is_step_in_odb(odb, Init.extract_para.step_name))
@@ -35,6 +37,8 @@ int Extract_From_ODB::Extract_data_from_odb(const Input& Init)
         return 0;
     }
     cout << endl << "There are " << n_frames << " frames in the Abaqus database." << endl;
+    itt1 = time(NULL);
+    cout << "Initialization of Abaqus API and variables time: " << (int)(itt1 - itt0) << " secs." << endl;
 
     //Data needed in case there are CNTs
     int n_cnts = 0;
