@@ -803,14 +803,26 @@ int Extract_From_ODB::Extract_matrix_data_for_frame(const int& frame, odb_Assemb
 
     return 1;
 }
-//This function gets the displacements for a given set node taht contains only one node
+//This function gets the displacements for a given set node that contains only one node
 int Extract_From_ODB::Get_displacement_for_node_set(const string& set_name, odb_Assembly& root_assy, odb_FieldOutput& current_fieldU, double disp[])
 {
-    //Access set from root assembly
-    odb_Set& sub_set = root_assy.nodeSets()[set_name.c_str()];
 
     //Get the displacement objects of the set
-    odb_FieldOutput set_disp = current_fieldU.getSubset(sub_set);
+    odb_FieldOutput set_disp;
+
+    //Access set from root assembly
+    try
+    {
+        odb_Set& sub_set = root_assy.nodeSets()[set_name.c_str()];
+
+        //Get the displacement objects of the set
+        set_disp = current_fieldU.getSubset(sub_set);
+    }
+    catch (...)
+    {
+        cout << "Error while accessing set " << set_name << " form Abaqus odb file." << endl;
+        return 0;
+    }
 
     //Get the sequence of values of the displacement object for matrix1
     const odb_SequenceFieldValue& vals = set_disp.values();
